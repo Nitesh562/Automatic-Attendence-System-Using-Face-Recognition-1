@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Face Attendance</title><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<header><h1>Face Attendance</h1><span>Mobile + PC</span></header>
+<main>
+<section class="card">
+<h2>1. Register Student</h2>
+<input id="sid" type="number" placeholder="Student ID"><input id="name" placeholder="Student Name">
+<button onclick="capture()">Capture Face</button>
+<div id="preview"></div><button class="primary" onclick="register()">Register Student</button>
+</section>
+<section class="card"><h2>2. Train</h2><button class="primary" onclick="train()">Train Face Model</button><p id="trainmsg"></p></section>
+<section class="card">
+<h2>3. Attendance</h2><video id="video" autoplay playsinline></video><canvas id="canvas" hidden></canvas>
+<button class="primary" onclick="start()">Start Camera</button><button onclick="stop()">Stop</button>
+<p id="status">Camera stopped</p>
+</section>
+<section class="card"><h2>Attendance Records</h2><button onclick="loadAttendance()">Refresh</button><button onclick="location.href='/api/export/csv'">CSV</button><button onclick="location.href='/api/export/xlsx'">Excel</button>
+<div class="tablewrap"><table><thead><tr><th>ID</th><th>Name</th><th>Date</th><th>Time</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+</main>
+<script src="/static/app.js"></script>
+</body></html>
